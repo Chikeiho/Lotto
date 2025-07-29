@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mia & Chike Chill Zone</title>
   <link rel="stylesheet" href="style.css" />
   
@@ -17,6 +19,38 @@
         align-items: center;
         height: 100vh;
         }
+        .container {
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background-color: #ffffffdd;
+}
+a {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #007e6d;
+  background-color: #e0fff7;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+a:hover {
+  background-color: #b8f2e6;
+}
+
+body {
+  flex-direction: column;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+
     
         .container {
         text-align: center;
@@ -57,6 +91,22 @@
         from { opacity: 0.6; }
         to { opacity: 1; }
         }
+        @media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .scripture-box {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .palm {
+    height: 100px;
+    background-size: contain;
+  }
+}
+
     </style>
 </head>
 <body>

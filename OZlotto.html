@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oz Lotto Picker Zone 🎱</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    #lottoNumbers {
+      font-size: 2rem;
+      background: #ffffff22;
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 2rem auto;
+      display: inline-block;
+    }
+
+    button {
+      background-color: #ffd700;
+      color: #1e3c72;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00000055;
+    }
+
+    button:hover {
+      background-color: #ffec8b;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <h1>Oz Lotto Picker Zone 🎱</h1>
+  <p>Tonight’s lucky numbers, picked from the most frequent winners:</p>
+  <div id="lottoNumbers">🎲 Hit "Generate" to begin!</div>
+  <br>
+  <button onclick="showNumbers()">Generate Numbers</button>
+    <br><br>
+    <h2>Manual Entry 📝</h2>
+<input type="text" id="manualInput" placeholder="Enter 7 numbers separated by commas" style="padding: 8px; width: 60%; border-radius: 8px; border: none;" />
+<br><br>
+<button onclick="addManualEntry()">Add Manually</button>
+
+    <br>
+<h2>Results Tracker 📊</h2>
+<table id="resultsTable" style="margin: 0 auto; background: #ffffff11; border-radius: 8px;">
+  <thead>
+    <tr>
+      <th style="padding: 8px;">Date</th>
+      <th style="padding: 8px;">Your Numbers</th>
+    </tr>
+  </thead>
+  <tbody id="resultsBody">
+  </tbody>
+</table>
+
+
+  <footer>
+    Designed by Mia & Chike ✨ | Powered by Data & Hope
+  </footer>
+
+  <script>
+    // Hot and cold number pools
+const hotNumbers = [21, 47, 3, 24, 5, 12, 30];
+const coldNumbers = [42, 11, 4, 8, 39, 18, 28, 34, 7];
+
+// Combined pool with random mix
+function generateNumbers() {
+  const combinedPool = [...hotNumbers, ...coldNumbers];
+  const picks = [];
+
+  while (picks.length < 7) {
+    const index = Math.floor(Math.random() * combinedPool.length);
+    const selected = combinedPool.splice(index, 1)[0];
+    if (!picks.includes(selected)) {
+      picks.push(selected);
+    }
+  }
+
+  return picks.sort((a, b) => a - b);
+}
+
+// Display function
+const lottoDisplay = document.getElementById("lottoNumbers");
+
+function showNumbers() {
+  const numbers = generateNumbers();
+  lottoDisplay.textContent = numbers.join(" 🎯 ");
+}
+
+    // Manual entry function
+    function addManualEntry() {
+  const input = document.getElementById("manualInput").value;
+  const numbers = input.split(",").map(n => parseInt(n.trim())).filter(n => !isNaN(n));
+
+  if (numbers.length !== 7) {
+    alert("Please enter exactly 7 numbers.");
+    return;
+  }
+
+  const resultsBody = document.getElementById("resultsBody");
+  const newRow = document.createElement("tr");
+
+  const dateCell = document.createElement("td");
+  dateCell.textContent = new Date().toLocaleDateString();
+  dateCell.style.padding = "8px";
+
+  const numbersCell = document.createElement("td");
+  numbersCell.textContent = numbers.sort((a, b) => a - b).join(", ");
+  numbersCell.style.padding = "8px";
+
+  newRow.appendChild(dateCell);
+  newRow.appendChild(numbersCell);
+  resultsBody.appendChild(newRow);
+
+  document.getElementById("manualInput").value = ""; // Clear input
+}
+
+
+// Results tracking
+function generateNumbers() {
+  const hotNumbers = [21, 47, 3, 24, 5, 12, 30];
+  const coldNumbers = [42, 11, 4, 8, 39, 18, 28, 34, 7];
+  const combinedPool = [...hotNumbers, ...coldNumbers];
+  const picks = [];
+
+  while (picks.length < 7) {
+    const index = Math.floor(Math.random() * combinedPool.length);
+    const selected = combinedPool.splice(index, 1)[0];
+    if (!picks.includes(selected)) {
+      picks.push(selected);
+    }
+  }
+
+  return picks.sort((a, b) => a - b);
+}
+
+function showNumbers() {
+  const numbers = generateNumbers();
+  const display = document.getElementById("lottoNumbers");
+  display.textContent = numbers.join(" 🎯 ");
+
+  // Auto-entry into results tracker
+  const resultsBody = document.getElementById("resultsBody");
+  const newRow = document.createElement("tr");
+
+  const dateCell = document.createElement("td");
+  dateCell.textContent = new Date().toLocaleDateString();
+  dateCell.style.padding = "8px";
+
+  const numbersCell = document.createElement("td");
+  numbersCell.textContent = numbers.join(", ");
+  numbersCell.style.padding = "8px";
+
+  newRow.appendChild(dateCell);
+  newRow.appendChild(numbersCell);
+  resultsBody.appendChild(newRow);
+}
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mia & Chike Chill Zone</title>
+  <link rel="stylesheet" href="style.css" />
+  
+    <style>
+        body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(to bottom, #dfffe9, #b8f2e6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        }
+    
+        .container {
+        text-align: center;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        background-color: #ffffffdd;
+        }
+    
+        h1 {
+        font-size: 2.5rem;
+        color: #007e6d;
+        margin-bottom: 1rem;
+        }
+    
+        .scripture-box {
+        font-size: 1.2rem;
+        font-style: italic;
+        color: #444;
+        margin-top: 2rem;
+        animation: fadeIn 2s ease-in-out infinite alternate;
+        }
+    
+        .palm {
+        background: url('https://api.fantasticfurniture.com.au/medias/Product-Detail-Spartacus-BTPARPSMLOOOPRLGRE-PD-1-CONTAINER-original-FantasticFurniture-WF?context=bWFzdGVyfGltYWdlc3wxMDA3OTh8aW1hZ2UvanBlZ3xhREUxTDJneFpTOHhNREF6TWpReU16SXdOamswTWk5UWNtOWtkV04wTFVSbGRHRnBiQzFUY0dGeWRHRmpkWE5mUWxSUVFWSlFVMDFNVDA5UFVGSk1SMUpGWDFCRVh6RmZRMDlPVkVGSlRrVlNYMjl5YVdkcGJtRnNYMFpoYm5SaGMzUnBZMFoxY201cGRIVnlaUzFYUmd8YWY2YjVmN2E4YmRmOTBmNTQxMjVkZTRmMmMwOGIwOWI4ZDgzY2JmOGVlZDdmNGM4ODgyZDRjYWViZmVlNDI4YQ') no-repeat center;
+        background-size: contain;
+        height: 150px;
+        animation: sway 4s ease-in-out infinite;
+        }
+    
+        @keyframes sway {
+        0% { transform: rotate(0deg); }
+        50% { transform: rotate(2deg); }
+        100% { transform: rotate(0deg); }
+        }
+    
+        @keyframes fadeIn {
+        from { opacity: 0.6; }
+        to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to the Chill Zone</h1>
+    <div class="palm"></div>
+    <div class="scripture-box">
+      <p id="scripture">"Be still, and know that I am God." – Psalm 46:10</p>
+      <a href="Lotto.html" target="_blank">Saturday Lotto Picker</a> <br>
+      <a href="OZlotto.html" target="_blank">Oz Lotto Picker</a>
+    </div>
+  </div>
+
+  <script>
+    const scriptures = [
+      "\"Be still, and know that I am God.\" – Psalm 46:10",
+      "\"The Lord is my shepherd; I shall not want.\" – Psalm 23:1",
+      "\"I can do all things through Christ who strengthens me.\" – Philippians 4:13",
+    ];
+    let idx = 0;
+    setInterval(() => {
+      idx = (idx + 1) % scriptures.length;
+      document.getElementById("scripture").textContent = scriptures[idx];
+    }, 5000);
+  </script>
+</body>
+</html>
